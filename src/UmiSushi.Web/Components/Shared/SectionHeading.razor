@@ -1,0 +1,23 @@
+@* Genbrugelig SEO sektion-overskrift *@
+
+<div class="@ContainerClass">
+    @if (!string.IsNullOrEmpty(Label))
+    {
+        <span class="section-label">@Label</span>
+    }
+    <h2 class="section-title @TitleClass">@Title</h2>
+    @if (!string.IsNullOrEmpty(Subtitle))
+    {
+        <p class="section-subtitle">@Subtitle</p>
+    }
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public string Label { get; set; } = "";
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Subtitle { get; set; } = "";
+    [Parameter] public string ContainerClass { get; set; } = "";
+    [Parameter] public string TitleClass { get; set; } = "";
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

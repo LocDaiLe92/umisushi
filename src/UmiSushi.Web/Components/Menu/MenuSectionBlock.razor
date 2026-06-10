@@ -1,0 +1,37 @@
+@using UmiSushi.Web.Models.Menu
+@using MenuSectionModel = UmiSushi.Web.Models.Menu.MenuSection
+
+<div id="section-@Section.Id" style="scroll-margin-top:calc(var(--navbar-height) + 3.5rem);">
+
+    <div class="menu-section-header">
+        <div class="menu-section-header-text">
+            <h2 class="menu-section-heading">@Section.Title</h2>
+            @if (!string.IsNullOrEmpty(Section.Subtitle))
+            {
+                <p class="allergen-note">@Section.Subtitle</p>
+            }
+        </div>
+    </div>
+
+    @foreach (var item in Section.Items)
+    {
+        <MenuItemCard Item="@item" />
+    }
+
+    @if (Section.Images?.Count > 0)
+    {
+        <div class="menu-section-images menu-section-images--@Section.Id">
+            @foreach (var img in Section.Images)
+            {
+                <div class="menu-section-img-wrap">
+                    <img src="@img" alt="@Section.Title" loading="lazy" />
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter, EditorRequired] public MenuSectionModel Section { get; set; } = default!;
+}

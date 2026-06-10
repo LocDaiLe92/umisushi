@@ -1,0 +1,69 @@
+@page "/menu"
+@inject MenuDataService MenuService
+@using UmiSushi.Web.Services
+@using UmiSushi.Web.Models.Menu
+@using UmiSushi.Web.Components.Menu
+@using MenuSectionModel = UmiSushi.Web.Models.Menu.MenuSection
+
+<PageTitle>Menu – UmiSushi Ry</PageTitle>
+
+<HeadContent>
+    <meta name="description" content="Se UmiSushis fulde menukort – forretter, sashimi, nigiri, maki, ura maki, kaburi maki, menuer, drikkevarer og meget mere. Frisk sushi i Ry." />
+    <meta property="og:title" content="Menu – UmiSushi Ry" />
+    <meta property="og:description" content="Frisk sushi og japanske specialiteter. Se vores komplette menukort." />
+    <meta property="og:url" content="@(SiteConfig.SiteUrl)/menu" />
+    <meta property="og:image" content="@(SiteConfig.SiteUrl + SiteConfig.DefaultOgImage)" />
+    <link rel="canonical" href="@(SiteConfig.SiteUrl)/menu" />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Menu",
+      "name": "UmiSushi Menukort",
+      "url": "@(SiteConfig.SiteUrl)/menu",
+      "inLanguage": "da",
+      "hasMenuSection": [
+        { "@@type": "MenuSection", "name": "Forretter" },
+        { "@@type": "MenuSection", "name": "Sashimi" },
+        { "@@type": "MenuSection", "name": "Nigiri" },
+        { "@@type": "MenuSection", "name": "Maki" }
+      ]
+    }
+    </script>
+</HeadContent>
+
+<!-- Page header -->
+<div style="background:var(--color-dark);padding:5rem 0 3rem;border-bottom:1px solid var(--color-border);">
+    <div class="umi-container">
+        <span class="section-label">UmiSushi Ry</span>
+        <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Vores Menukort</h1>
+        <p class="section-subtitle" style="margin-left:0;">
+            Henvend dig til personalet med spørgsmål om allergener.
+            Allergener er angivet i parentes ved hvert menupunkt.
+        </p>
+    </div>
+</div>
+
+<!-- Sticky category tab bar -->
+<CategoryTabBar Sections="@_sections" ActiveId="@_activeSection" ActiveIdChanged="@(id => _activeSection = id)" />
+
+<!-- Menu content -->
+<div class="umi-section" style="padding-top:1.5rem;">
+    <div class="umi-container">
+        @foreach (var cat in _sections)
+        {
+            <MenuSectionBlock Section="@cat" />
+        }
+    </div>
+</div>
+
+@code {
+    private List<MenuSectionModel> _sections = new();
+    private string _activeSection = "";
+
+    protected override void OnInitialized()
+    {
+        _sections = MenuService.GetAllSections();
+        if (_sections.Count > 0)
+            _activeSection = _sections[0].Id;
+    }
+}

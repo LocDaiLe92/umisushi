@@ -1,0 +1,86 @@
+@using UmiSushi.Web.Services
+
+<footer>
+    <div class="umi-container">
+        <div class="footer-grid">
+            <!-- Brand column -->
+            <div>
+                <a href="/" aria-label="UmiSushi">
+                    <img src="/images/umisushilogo.png" alt="UmiSushi" class="footer-logo" />
+                </a>
+                <p class="footer-tagline">
+                    Autentisk japansk sushi i hjertet af Ry.<br />
+                    Vores køkken er åbent – kom og nyd en sublim madoplevelse.
+                </p>
+                <div style="display:flex;gap:1rem;margin-top:1rem;align-items:center;">
+                    <!-- Facebook -->
+                    <a href="@SiteConfig.FacebookUrl" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                       style="display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:#1877F2;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="@SiteConfig.InstagramUrl" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                       style="display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+                        </svg>
+                    </a>
+                    <!-- TripAdvisor -->
+                    <a href="@SiteConfig.TripAdvisorUrl" target="_blank" rel="noopener noreferrer" aria-label="TripAdvisor"
+                       style="display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:50%;background:#34E0A1;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#000">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-3.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-3.5-6c-2 0-3.9.6-5.5 1.6L8 10c.9-.6 2-.9 3.1-1h.9c1.1.1 2.2.4 3.1 1l1.5-1.4C15 7.6 13.1 7 11 7z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div>
+                <div class="footer-heading">Navigation</div>
+                <ul class="footer-links">
+                    <li><a href="/">Hjem</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/reservation">Reservation</a></li>
+                    <li><a href="/bestil-take-away">Bestil Take-Away</a></li>
+                    <li><a href="/kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <!-- Hours -->
+            <div>
+                <div class="footer-heading">Åbningstider</div>
+                <dl class="footer-hours">
+                    <dt>Mandag</dt>
+                    <dd style="color:var(--color-subtle);font-style:italic;">Lukket</dd>
+                    <dt>Tirsdag – Fredag</dt>
+                    <dd>16:00 – 21:00</dd>
+                    <dt>Lørdag</dt>
+                    <dd>12:00 – 21:00</dd>
+                    <dt>Søndag</dt>
+                    <dd>16:00 – 20:00</dd>
+                </dl>
+                <p style="font-size:0.75rem;color:var(--color-subtle);margin-top:0.75rem;line-height:1.5;">
+                    Køkkenet lukker 30 min. før lukketid
+                </p>
+                <div style="margin-top:1.25rem;">
+                    <a href="tel:@SiteConfig.Phone" style="color:var(--color-muted);font-size:0.9rem;display:block;margin-bottom:0.4rem;">
+                        @SiteConfig.PhoneDisplay
+                    </a>
+                    <a href="mailto:@SiteConfig.Email" style="color:var(--color-muted);font-size:0.9rem;">
+                        @SiteConfig.Email
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-copyright">© @DateTime.Now.Year UmiSushi Ry. Alle rettigheder forbeholdes.</span>
+
+        </div>
+    </div>
+</footer>

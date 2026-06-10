@@ -1,0 +1,38 @@
+@using UmiSushi.Web.Models.Menu
+
+<div class="menu-item">
+    <div>
+        <div class="menu-item-name">
+            @if (Item.Number.HasValue)
+            {
+                <span style="color:var(--color-muted);margin-right:0.5rem;font-size:0.85em;">@Item.Number.</span>
+            }
+            @Item.Name
+        </div>
+        @if (!string.IsNullOrEmpty(Item.Description))
+        {
+            <div class="menu-item-desc">@Item.Description</div>
+        }
+        @if (Item.Contents?.Count > 0)
+        {
+            <ul class="menu-item-contents">
+                @foreach (var c in Item.Contents)
+                {
+                    <li>@c</li>
+                }
+            </ul>
+        }
+        @if (!string.IsNullOrEmpty(Item.Allergens))
+        {
+            <div class="menu-item-allergens">(@Item.Allergens)</div>
+        }
+    </div>
+    @if (!string.IsNullOrEmpty(Item.Price))
+    {
+        <div class="menu-item-price">@Item.Price</div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public MenuItem Item { get; set; } = default!;
+}

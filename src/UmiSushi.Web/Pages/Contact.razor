@@ -1,0 +1,112 @@
+@page "/kontakt"
+@using UmiSushi.Web.Services
+@using UmiSushi.Web.Components.Shared
+
+<PageTitle>Kontakt – UmiSushi Ry</PageTitle>
+
+<HeadContent>
+    <meta name="description" content="Find UmiSushi i Ry. Telefon: 86 89 80 87, e-mail: info@umisushi.dk. Se åbningstider og find os på kortet." />
+    <meta property="og:title" content="Kontakt – UmiSushi Ry" />
+    <meta property="og:url" content="@(SiteConfig.SiteUrl)/kontakt" />
+    <link rel="canonical" href="@(SiteConfig.SiteUrl)/kontakt" />
+</HeadContent>
+
+<!-- Header -->
+<div style="background:var(--color-dark);padding:5rem 0 3rem;border-bottom:1px solid var(--color-border);">
+    <div class="umi-container">
+        <span class="section-label">Find os</span>
+        <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Kontakt</h1>
+        <p class="section-subtitle" style="margin-left:0;">Vi er altid klar til at hjælpe – ring, skriv, eller kig forbi.</p>
+    </div>
+</div>
+
+<section class="umi-section">
+    <div class="umi-container">
+        <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start;">
+
+            <!-- Info column -->
+            <div>
+                <SectionHeading Label="Information" Title="Kontaktoplysninger" />
+
+                <div style="margin-top:1.5rem;">
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">Adresse</div>
+                            <a href="https://maps.google.com/maps?q=Skanderborgvej+11,+8680+Ry,+Danmark" target="_blank" rel="noopener noreferrer"
+                               style="color:var(--color-text);text-decoration:none;font-size:1.15rem;">@SiteConfig.Address</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">Telefon</div>
+                            <a href="tel:@SiteConfig.Phone" style="color:var(--color-text);text-decoration:none;font-size:1.15rem;">
+                                @SiteConfig.PhoneDisplay
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">E-mail</div>
+                            <a href="mailto:@SiteConfig.Email" style="color:var(--color-text);text-decoration:none;font-size:1.15rem;">
+                                @SiteConfig.Email
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">Facebook</div>
+                            <a href="@SiteConfig.FacebookUrl" target="_blank" rel="noopener noreferrer"
+                               style="color:var(--color-gold);font-size:0.95rem;">facebook.com/umisushidk</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hours -->
+                <div style="margin-top:3rem;">
+                    <SectionHeading Label="Åbningstider" Title="Hvornår er vi åbne?" />
+                    <table class="hours-table" style="margin-top:1.25rem;">
+                        <tr><td>Mandag</td><td class="hours-closed">Lukket</td></tr>
+                        <tr><td>Tirsdag – Fredag</td><td>16:00 – 21:00</td></tr>
+                        <tr><td>Lørdag</td><td>12:00 – 21:00</td></tr>
+                        <tr><td>Søndag</td><td>16:00 – 20:00</td></tr>
+                    </table>
+                    <p style="font-size:0.8rem;color:var(--color-subtle);margin-top:0.75rem;font-style:italic;">
+                        Køkkenet lukker 30 min. før lukketid.
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- Map -->
+            <div>
+                <SectionHeading Label="Kort" Title="Find os her" />
+                <div style="margin-top:1.5rem;">
+                    <iframe
+                        src="@SiteConfig.GoogleMapsEmbedUrl"
+                        class="map-embed"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="UmiSushi placering på kort"
+                        aria-label="Google Maps kort der viser UmiSushis placering i Ry">
+                    </iframe>
+                </div>
+
+                <div style="margin-top:2.5rem;text-align:center;">
+                    <a href="/reservation" class="btn-primary" style="display:inline-flex;justify-content:center;">
+                        Book et bord
+                    </a>
+                    <span style="color:var(--color-border);margin:0 1rem;">|</span>
+                    <a href="/bestil-take-away" class="btn-secondary" style="display:inline-flex;justify-content:center;">
+                        Bestil Take-Away
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

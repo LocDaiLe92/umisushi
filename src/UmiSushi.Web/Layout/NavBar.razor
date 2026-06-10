@@ -1,0 +1,68 @@
+@inject NavigationManager Nav
+@using UmiSushi.Web.Services
+@implements IDisposable
+
+<nav class="navbar">
+    <div class="umi-container navbar-inner">
+        <a href="/" class="nav-logo" aria-label="UmiSushi">
+            <img src="/images/umisushilogo.png" alt="UmiSushi" style="height:2.4rem;width:auto;object-fit:contain;" />
+        </a>
+
+        <!-- Desktop nav links -->
+        <ul class="nav-links">
+            <li><a href="/" class="@ActiveClass("/")">Hjem</a></li>
+            <li><a href="/menu" class="@ActiveClass("/menu")">Menu</a></li>
+            <li><a href="/bestil-take-away" class="@ActiveClass("/bestil-take-away")">Take-Away</a></li>
+            <li><a href="/kontakt" class="@ActiveClass("/kontakt")">Kontakt</a></li>
+            <li><a href="/reservation" class="btn-primary nav-book-btn">Book et bord</a></li>
+        </ul>
+
+        <!-- Hamburger -->
+        <button class="hamburger" @onclick="ToggleMenu" aria-label="Menu" aria-expanded="@_menuOpen">
+            <span style="@(_menuOpen ? "transform:rotate(45deg) translate(5px,5px)" : "")"></span>
+            <span style="@(_menuOpen ? "opacity:0" : "")"></span>
+            <span style="@(_menuOpen ? "transform:rotate(-45deg) translate(5px,-5px)" : "")"></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu @(_menuOpen ? "open" : "")">
+    <ul>
+        <li><a href="/" class="@ActiveClass("/")" @onclick="CloseMenu">Hjem</a></li>
+        <li><a href="/menu" class="@ActiveClass("/menu")" @onclick="CloseMenu">Menu</a></li>
+        <li><a href="/bestil-take-away" class="@ActiveClass("/bestil-take-away")" @onclick="CloseMenu">Take-Away</a></li>
+        <li><a href="/kontakt" class="@ActiveClass("/kontakt")" @onclick="CloseMenu">Kontakt</a></li>
+        <li><a href="/reservation" class="mobile-book-btn" @onclick="CloseMenu">Book et bord</a></li>
+    </ul>
+</div>
+
+@code {
+    private bool _menuOpen = false;
+
+    protected override void OnInitialized()
+    {
+        Nav.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
+    }
+
+    private void ToggleMenu() => _menuOpen = !_menuOpen;
+    private void CloseMenu() => _menuOpen = false;
+
+    private string ActiveClass(string path)
+    {
+        var current = "/" + Nav.ToBaseRelativePath(Nav.Uri).TrimEnd('/');
+        if (path == "/" && current == "/") return "active";
+        if (path != "/" && current.StartsWith(path)) return "active";
+        return "";
+    }
+}

@@ -1,0 +1,76 @@
+@page "/reservation"
+@using UmiSushi.Web.Services
+@using UmiSushi.Web.Components.Reservation
+@using UmiSushi.Web.Components.Shared
+
+<PageTitle>Reservation – UmiSushi Ry</PageTitle>
+
+<HeadContent>
+    <meta name="description" content="Book et bord hos UmiSushi i Ry. Ring på 86 89 80 87, send en mail eller udfyld vores reservationsformular. Vi glæder os til at se dig!" />
+    <meta property="og:title" content="Reservation – UmiSushi Ry" />
+    <meta property="og:url" content="@(SiteConfig.SiteUrl)/reservation" />
+    <link rel="canonical" href="@(SiteConfig.SiteUrl)/reservation" />
+</HeadContent>
+
+<!-- Header -->
+<div style="background:var(--color-dark);padding:5rem 0 3rem;border-bottom:1px solid var(--color-border);">
+    <div class="umi-container">
+        <span class="section-label">Bestil plads</span>
+        <h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4rem);">Reserver et bord</h1>
+        <p class="section-subtitle">Ring, skriv eller udfyld formularen – vi vender tilbage hurtigst muligt.</p>
+    </div>
+</div>
+
+<section class="umi-section">
+    <div class="umi-container">
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;">
+
+            <!-- Contact info + hours -->
+            <div>
+                <SectionHeading Label="Kontakt" Title="Skriv eller ring direkte" />
+
+                <div style="margin-top:1.5rem;">
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">Telefon</div>
+                            <a href="tel:@SiteConfig.Phone" class="contact-info-value" style="color:var(--color-text);text-decoration:none;font-size:1.15rem;">
+                                @SiteConfig.PhoneDisplay
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"></span>
+                        <div>
+                            <div class="contact-info-label">E-mail</div>
+                            <a href="mailto:@SiteConfig.Email" class="contact-info-value" style="color:var(--color-text);text-decoration:none;font-size:1.15rem;">
+                                @SiteConfig.Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:3rem;">
+                    <SectionHeading Label="Åbningstider" Title="Hvornår kan du booke?" />
+                    <table class="hours-table" style="margin-top:1.25rem;">
+                        <tr><td>Mandag</td><td class="hours-closed">Lukket</td></tr>
+                        <tr><td>Tirsdag – Fredag</td><td>16:00 – 21:00</td></tr>
+                        <tr><td>Lørdag</td><td>12:00 – 21:00</td></tr>
+                        <tr><td>Søndag</td><td>16:00 – 20:00</td></tr>
+                    </table>
+                    <p style="font-size:0.8rem;color:var(--color-subtle);margin-top:0.75rem;font-style:italic;">
+                        Køkkenet lukker 30 min. før lukketid.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div>
+                <SectionHeading Label="Forespørgsel" Title="Send os en besked" />
+                <div style="margin-top:1.5rem;">
+                    <ReservationForm />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

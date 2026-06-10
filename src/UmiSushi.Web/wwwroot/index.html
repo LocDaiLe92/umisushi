@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <title>UmiSushi Ry – Autentisk Sushi i Hjertet af Ry</title>
+    <base href="/" />
+    <link rel="preload" id="webassembly" />
+    <!-- Google Fonts: Playfair Display + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'umi-black': '#FFFFFF',
+                        'umi-dark': '#F7F7F7',
+                        'umi-surface': '#F0F0F0',
+                        'umi-border': '#E0E0E0',
+                        'umi-gold': '#0A0A0A',
+                        'umi-coral': '#222222',
+                        'umi-text': '#0A0A0A',
+                        'umi-muted': '#555555',
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'Georgia', 'serif'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="UmiSushi.Web.styles.css" rel="stylesheet" />
+    <script type="importmap"></script>
+</head>
+
+<body class="bg-umi-black text-umi-text font-sans">
+    <div id="app">
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#FFFFFF;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation:spin 1s linear infinite;">
+                <circle cx="24" cy="24" r="20" stroke="#0A0A0A" stroke-width="3" stroke-dasharray="100" stroke-dashoffset="60" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui" style="display:none;position:fixed;bottom:0;width:100%;background:#FFFFFF;color:#0A0A0A;border-top:2px solid #0A0A0A;padding:1rem;text-align:center;z-index:9999;">
+        En fejl opstod.
+        <a href="." style="color:#0A0A0A;margin-left:0.5rem;font-weight:700;">Genindlæs</a>
+        <span class="dismiss" style="float:right;cursor:pointer;padding:0 0.5rem;">✕</span>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script>
+        window.scrollToSection = function (id) {
+            var el = document.getElementById('section-' + id);
+            if (el) {
+                window._scrollSpyPaused = true;
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                clearTimeout(window._scrollSpyTimer);
+                window._scrollSpyTimer = setTimeout(function () {
+                    window._scrollSpyPaused = false;
+                }, 800);
+            }
+        };
+
+        window.initMenuScrollSpy = function (dotnetRef, sectionIds) {
+            // --- drag-scroll on tab bar ---
+            var bar = document.querySelector('.menu-tab-bar');
+            if (bar) {
+                var isDown = false, startX, scrollLeft;
+                bar.addEventListener('mousedown', function (e) {
+                    isDown = true;
+                    bar.style.cursor = 'grabbing';
+                    startX = e.pageX - bar.offsetLeft;
+                    scrollLeft = bar.scrollLeft;
+                });
+                bar.addEventListener('mouseleave', function () { isDown = false; bar.style.cursor = ''; });
+                bar.addEventListener('mouseup', function () { isDown = false; bar.style.cursor = ''; });
+                bar.addEventListener('mousemove', function (e) {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    var x = e.pageX - bar.offsetLeft;
+                    bar.scrollLeft = scrollLeft - (x - startX);
+                });
+                // touch
+                var touchStartX, touchScrollLeft;
+                bar.addEventListener('touchstart', function (e) {
+                    touchStartX = e.touches[0].pageX;
+                    touchScrollLeft = bar.scrollLeft;
+                }, { passive: true });
+                bar.addEventListener('touchmove', function (e) {
+                    var dx = touchStartX - e.touches[0].pageX;
+                    bar.scrollLeft = touchScrollLeft + dx;
+                }, { passive: true });
+            }
+
+            // --- scroll spy ---
+            var ticking = false;
+            var navbarEl = document.querySelector('.navbar');
+            var tabBarEl = document.querySelector('.menu-tab-bar');
+
+            function getOffset() {
+                var n = navbarEl ? navbarEl.offsetHeight : 80;
+                var t = tabBarEl ? tabBarEl.offsetHeight : 52;
+                return n + t + 16;
+            }
+
+            function getActive() {
+                var offset = getOffset();
+                var active = sectionIds[0];
+                for (var i = 0; i < sectionIds.length; i++) {
+                    var el = document.getElementById('section-' + sectionIds[i]);
+                    if (el && el.getBoundingClientRect().top <= offset + 20) active = sectionIds[i];
+                }
+                return active;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (window._scrollSpyPaused) return;
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        var active = getActive();
+                        dotnetRef.invokeMethodAsync('SetActiveSection', active);
+                        var btn = document.querySelector('.menu-tab.active');
+                        if (btn && bar) btn.scrollIntoView({ block: 'nearest', inline: 'center' });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        };
+    </script>
+</body>
+
+</html>

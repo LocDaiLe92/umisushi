@@ -1,0 +1,24 @@
+@using UmiSushi.Web.Services
+
+<HeadContent>
+    <title>@FullTitle</title>
+    <meta name="description" content="@Description" />
+    <meta property="og:title" content="@FullTitle" />
+    <meta property="og:description" content="@Description" />
+    <meta property="og:url" content="@(SiteConfig.SiteUrl + CanonicalPath)" />
+    <meta property="og:image" content="@(SiteConfig.SiteUrl + (string.IsNullOrEmpty(OgImage) ? SiteConfig.DefaultOgImage : OgImage))" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="@(SiteConfig.SiteUrl + CanonicalPath)" />
+</HeadContent>
+
+@code {
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Description { get; set; } = "";
+    [Parameter] public string CanonicalPath { get; set; } = "";
+    [Parameter] public string? OgImage { get; set; }
+
+    private string FullTitle => string.IsNullOrEmpty(Title)
+        ? SiteConfig.SiteName
+        : $"{Title} – {SiteConfig.SiteName}";
+}

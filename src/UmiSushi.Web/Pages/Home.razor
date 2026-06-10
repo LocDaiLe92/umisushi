@@ -1,0 +1,249 @@
+﻿@page "/"
+@using UmiSushi.Web.Services
+@using UmiSushi.Web.Components.Shared
+
+<PageTitle>UmiSushi Ry – Autentisk Sushi i Hjertet af Ry</PageTitle>
+
+<HeadContent>
+    <meta name="description" content="UmiSushi i Ry byder på autentisk japansk sushi i hyggelige omgivelser. Oplev vores menukort, reserver et bord eller bestil take-away. Åbent tirsdag-søndag." />
+    <meta property="og:title" content="UmiSushi Ry – Autentisk Sushi i Hjertet af Ry" />
+    <meta property="og:description" content="Autentisk japansk sushi i hjertet af Ry. Indendørs og udendørs siddepladser i gårdhaven." />
+    <meta property="og:url" content="@SiteConfig.SiteUrl" />
+    <meta property="og:image" content="@(SiteConfig.SiteUrl + SiteConfig.DefaultOgImage)" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="@SiteConfig.SiteUrl" />
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "Restaurant",
+      "name": "UmiSushi",
+      "url": "@SiteConfig.SiteUrl",
+      "telephone": "@SiteConfig.Phone",
+      "email": "@SiteConfig.Email",
+      "address": {
+        "@@type": "PostalAddress",
+        "addressLocality": "Ry",
+        "addressCountry": "DK"
+      },
+      "servesCuisine": ["Japanese", "Sushi"],
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        { "@@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "21:00" },
+        { "@@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "12:00", "closes": "21:00" },
+        { "@@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "16:00", "closes": "20:00" }
+      ],
+      "sameAs": ["@SiteConfig.FacebookUrl"]
+    }
+    </script>
+</HeadContent>
+
+<!-- ══ HERO ══════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-bg" style="background-image:url('/images/primary.jpg');"></div>
+    <div class="umi-container" style="position:relative;z-index:2;">
+        <div class="hero-content fade-in-up">
+            <span class="hero-eyebrow">Ry, Danmark</span>
+            <h1 class="hero-title">
+                Autentisk<br /><em>Sushi</em>
+            </h1>
+            <p class="hero-subtitle">
+                I hjertet af Ry – en sublim madoplevelse i hyggelige omgivelser med udsigt til palme og sand.
+            </p>
+            <div class="hero-ctas">
+                <a href="/reservation" class="btn-primary">Book et bord</a>
+                <a href="/bestil-take-away" class="btn-secondary">Take-Away</a>
+            </div>
+        </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);opacity:0.4;animation:fadeInUp 1s 1s both;color:white;">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ══ OM RESTAURANTEN ═══════════════════════════════════ -->
+<section class="umi-section" style="background:var(--color-dark);">
+    <div class="umi-container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+            <div class="fade-in-up">
+                <SectionHeading
+                    Label="Om Os"
+                    Title="Velkommen til UmiSushi i Ry"
+                    Subtitle="I hjertet af Ry kan du få en sublim madoplevelse. Kom ind i vores hyggelige restaurant, hvor du både kan sidde indendørs eller ude i vores hyggelige gårdhave med udsigt til palme og sand." />
+                <div style="margin-top:2rem;display:flex;gap:1rem;">
+                    <a href="/kontakt" class="btn-primary">Find os</a>
+                </div>
+            </div>
+            <div style="position:relative;max-width:420px;margin:0 auto;">
+                <div style="border-radius:60% 40% 55% 45% / 45% 55% 45% 55%;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.45);">
+                    <img src="/images/secondary1.jpg" alt="Hjertet bag UmiSushi"
+                         loading="lazy"
+                         style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 25%;display:block;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ HIGHLIGHTS — SPLIT ROWS ════════════════════════════ -->
+<div style="background:#f0f0f0;padding:0 0 0.35rem 0;">
+
+<!-- Row 1: billede venstre, tekst højre -->
+<section class="split-row">
+    <div class="split-row-image">
+        <img src="/images/secondary4.jpg" alt="Autentisk sushi hos UmiSushi" loading="lazy" />
+    </div>
+    <div class="split-row-body">
+        <span class="split-row-eyebrow">Fokus på kvalitet</span>
+        <h2 class="split-row-title">Velsmag</h2>
+        <p class="split-row-text">Hvert stykke sushi er håndformet med omhu — frisk fisk, præcise snit og råvarer i topklasse. Velsmag er ikke tilfældigt, det er en bevidst beslutning ved hvert eneste bid.</p>
+    </div>
+</section>
+
+<!-- Row 2: tekst venstre, billede højre -->
+<section class="split-row split-row--reverse">
+    <div class="split-row-image">
+        <img src="/images/secondary2.jpg" alt="Stemningsfuldt interiør i UmiSushi" loading="lazy" />
+    </div>
+    <div class="split-row-body">
+        <span class="split-row-eyebrow">Varmt og rustikt</span>
+        <h2 class="split-row-title">Atmosfæren</h2>
+        <p class="split-row-text">Træd ind i en varm og rustik stemning, hvor lyset er dæmpet og omgivelserne indbyder til at sætte tempoet ned. Nyd dit måltid indendørs eller ude i gårdhaven med palme og sand.</p>
+    </div>
+</section>
+
+<!-- Row 3: billede venstre, tekst højre -->
+<section class="split-row">
+    <div class="split-row-image">
+        <img src="/images/secondary3.jpg" alt="Service hos UmiSushi" loading="lazy" />
+    </div>
+    <div class="split-row-body">
+        <span class="split-row-eyebrow">Altid klar til at hjælpe</span>
+        <h2 class="split-row-title">Service</h2>
+        <p class="split-row-text">Vores team er dedikeret til at give dig en uforglemmelig oplevelse. Fra det øjeblik du træder ind, er vi til stede — diskrete, venlige og altid klar med en anbefaling.</p>
+    </div>
+</section>
+
+</div>
+
+<!-- ══ PHOTO MARQUEE ══════════════════════════════════════ -->
+<div class="photo-marquee-wrap">
+    <div class="photo-marquee-track">
+        <div class="photo-marquee-inner">
+            <img src="/images/sliders/slider1.jpg" alt="UmiSushi ret" />
+            <img src="/images/sliders/slider2.jpg" alt="UmiSushi ret" />
+            <img src="/images/sliders/slider3.jpg" alt="UmiSushi ret" />
+            <img src="/images/sliders/slider4.jpg" alt="UmiSushi ret" />
+            <img src="/images/sliders/slider5.jpg" alt="UmiSushi ret" />
+            <!-- duplicate for seamless loop -->
+            <img src="/images/sliders/slider1.jpg" alt="UmiSushi ret" aria-hidden="true" />
+            <img src="/images/sliders/slider2.jpg" alt="UmiSushi ret" aria-hidden="true" />
+            <img src="/images/sliders/slider3.jpg" alt="UmiSushi ret" aria-hidden="true" />
+            <img src="/images/sliders/slider4.jpg" alt="UmiSushi ret" aria-hidden="true" />
+            <img src="/images/sliders/slider5.jpg" alt="UmiSushi ret" aria-hidden="true" />
+        </div>
+    </div>
+</div>
+
+<!-- ══ FOOD CRAVING SECTION ════════════════════════════ -->
+<section class="food-cta">
+    <div class="food-cta-bg" style="background-image:url('/images/secondary3.jpg');"></div>
+    <div class="food-cta-content">
+        <span class="food-cta-eyebrow">Friskhed du kan smage</span>
+        <h2 class="food-cta-title">
+            Hvert bid er<br /><em>en oplevelse</em>
+        </h2>
+        <p class="food-cta-subtitle">
+            Fra frisk sashimi til kreative signature rolls — alt tilberedes med passion og de bedste råvarer.
+        </p>
+        <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+            <a href="/menu" class="btn-primary">Se hele menuen</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SOCIALE MEDIER & ANMELDELSER ─────────────────────-->
+<section class="umi-section" style="background:#f7f5f2;">
+    <div class="umi-container">
+        <div style="text-align:center;margin-bottom:3rem;">
+            <SectionHeading Label="Følg med" Title="Find os på sociale medier" />
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+            <!-- Facebook card -->
+            <a href="@SiteConfig.FacebookUrl" target="_blank" rel="noopener noreferrer" class="some-card">
+                <div class="some-card-icon" style="background:#1877F2;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </div>
+                <div class="some-card-name">Facebook</div>
+                <p class="some-card-desc">Følg os for nyheder, tilbud og billeder fra restauranten.</p>
+                <span class="some-card-cta">Følg os →</span>
+            </a>
+
+            <!-- Instagram card -->
+            <a href="@SiteConfig.InstagramUrl" target="_blank" rel="noopener noreferrer" class="some-card">
+                <div class="some-card-icon" style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+                    </svg>
+                </div>
+                <div class="some-card-name">Instagram</div>
+                <p class="some-card-desc">Se vores sushi i alle detaljer — friske billeder direkte fra køkkenet.</p>
+                <span class="some-card-cta">Følg os →</span>
+            </a>
+
+            <!-- TripAdvisor card -->
+            <a href="@SiteConfig.TripAdvisorUrl" target="_blank" rel="noopener noreferrer" class="some-card">
+                <div class="some-card-icon" style="background:#34E0A1;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#000">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-3.5 11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-3.5-6c-2 0-3.9.6-5.5 1.6L8 10c.9-.6 2-.9 3.1-1h.9c1.1.1 2.2.4 3.1 1l1.5-1.4C15 7.6 13.1 7 11 7z"/>
+                    </svg>
+                </div>
+                <div class="some-card-name">TripAdvisor</div>
+                <p class="some-card-desc">Læs hvad vores gæster siger — og del din egen oplevelse.</p>
+                <span class="some-card-cta">Se anmeldelser →</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ ÅBNINGSTIDER ──────────────────────────────────────-->
+<section class="umi-section" style="background:var(--color-surface);">
+    <div class="umi-container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+            <div>
+                <SectionHeading Label="Åbningstider" Title="Hvornår finder du os?" />
+                <table class="hours-table" style="margin-top:1.5rem;">
+                    <tr><td>Mandag</td><td class="hours-closed">Lukket</td></tr>
+                    <tr><td>Tirsdag – Fredag</td><td>16:00 – 21:00</td></tr>
+                    <tr><td>Lørdag</td><td>12:00 – 21:00</td></tr>
+                    <tr><td>Søndag</td><td>16:00 – 20:00</td></tr>
+                </table>
+                <p style="font-size:0.85rem;color:var(--color-subtle);margin-top:1rem;font-style:italic;">
+                    Køkkenet lukker 30 minutter før lukketid og modtager derefter ikke bestillinger.
+                </p>
+            </div>
+            <div>
+                <SectionHeading Label="Kontakt" Title="Ring eller skriv til os" />
+                <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+                    <a href="tel:@SiteConfig.Phone" style="color:var(--color-text);text-decoration:none;font-size:1.1rem;">
+                        @SiteConfig.PhoneDisplay
+                    </a>
+                    <a href="mailto:@SiteConfig.Email" style="color:var(--color-text);text-decoration:none;font-size:1.1rem;">
+                        @SiteConfig.Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

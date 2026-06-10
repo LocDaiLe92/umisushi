@@ -1,0 +1,56 @@
+@inject IJSRuntime JS
+@using UmiSushi.Web.Models.Menu
+@using MenuSectionModel = UmiSushi.Web.Models.Menu.MenuSection
+@implements IAsyncDisposable
+
+<div class="menu-tab-bar">
+    <div class="menu-tabs">
+        @foreach (var cat in Sections)
+        {
+            <button class="menu-tab @(ActiveId == cat.Id ? "active" : "")"
+                    @onclick="() => ScrollToSection(cat.Id)">
+                @cat.Title
+            </button>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public List<MenuSectionModel> Sections { get; set; } = new();
+    [Parameter] public string ActiveId { get; set; } = "";
+    [Parameter] public EventCallback<string> ActiveIdChanged { get; set; }
+
+    private DotNetObjectReference<CategoryTabBar>? _objRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _objRef = DotNetObjectReference.Create(this);
+            var ids = Sections.Select(s => s.Id).ToArray();
+            await JS.InvokeVoidAsync("initMenuScrollSpy", _objRef, ids);
+        }
+    }
+
+    [JSInvokable]
+    public async Task SetActiveSection(string id)
+    {
+        if (id != ActiveId)
+        {
+            await ActiveIdChanged.InvokeAsync(id);
+            StateHasChanged();
+        }
+    }
+
+    private async Task ScrollToSection(string id)
+    {
+        await ActiveIdChanged.InvokeAsync(id);
+        await JS.InvokeVoidAsync("scrollToSection", id);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _objRef?.Dispose();
+        await ValueTask.CompletedTask;
+    }
+}

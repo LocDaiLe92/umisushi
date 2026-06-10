@@ -1,0 +1,82 @@
+@using System.ComponentModel.DataAnnotations
+@using UmiSushi.Web.Services
+
+<EditForm Model="@_model" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+        <div class="form-group">
+            <label class="form-label" for="navn">Navn *</label>
+            <InputText id="navn" class="form-control" @bind-Value="_model.Navn" placeholder="Dit fulde navn" />
+            <ValidationMessage For="@(() => _model.Navn)" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="kontakt">Telefon / E-mail *</label>
+            <InputText id="kontakt" class="form-control" @bind-Value="_model.Kontakt" placeholder="Telefon eller e-mail" />
+            <ValidationMessage For="@(() => _model.Kontakt)" />
+        </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+        <div class="form-group">
+            <label class="form-label" for="dato">Dato *</label>
+            <InputDate id="dato" class="form-control" @bind-Value="_model.Dato" />
+            <ValidationMessage For="@(() => _model.Dato)" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="personer">Antal personer *</label>
+            <InputNumber id="personer" class="form-control" @bind-Value="_model.AntalPersoner" min="1" max="50" />
+            <ValidationMessage For="@(() => _model.AntalPersoner)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="oensker">Særlige ønsker</label>
+        <InputTextArea id="oensker" class="form-control" @bind-Value="_model.SaerligeOensker" rows="4"
+                       placeholder="Allergier, børnestol, fødselsdagsfejring..." />
+    </div>
+
+    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+        Send forespørgsel
+    </button>
+</EditForm>
+
+@if (_submitted)
+{
+    <div class="reservation-success" role="alert">
+        ✓ &nbsp; Tak for din forespørgsel! Vi vender tilbage hurtigst muligt på @_model.Kontakt.
+        Du er også velkommen til at ringe på <a href="tel:@SiteConfig.Phone" style="color:var(--color-gold);">@SiteConfig.PhoneDisplay</a>.
+    </div>
+}
+
+@code {
+    private ReservationModel _model = new() { Dato = DateOnly.FromDateTime(DateTime.Today.AddDays(1)) };
+    private bool _submitted = false;
+
+    private void HandleSubmit()
+    {
+        _submitted = true;
+        _model = new() { Dato = DateOnly.FromDateTime(DateTime.Today.AddDays(1)) };
+    }
+
+    public class ReservationModel
+    {
+        [Required(ErrorMessage = "Navn er påkrævet")]
+        [MaxLength(100)]
+        public string Navn { get; set; } = "";
+
+        [Required(ErrorMessage = "Telefon eller e-mail er påkrævet")]
+        [MaxLength(200)]
+        public string Kontakt { get; set; } = "";
+
+        [Required(ErrorMessage = "Dato er påkrævet")]
+        public DateOnly Dato { get; set; }
+
+        [Required(ErrorMessage = "Antal personer er påkrævet")]
+        [Range(1, 50, ErrorMessage = "Angiv 1–50 personer")]
+        public int AntalPersoner { get; set; } = 2;
+
+        [MaxLength(1000)]
+        public string SaerligeOensker { get; set; } = "";
+    }
+}
