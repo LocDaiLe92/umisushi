@@ -35,7 +35,7 @@ public class MenuDataService
         Id: "forretter",
         Title: "Forretter",
         Subtitle: "Henvend dig til personalet med spørgsmål om allergener",
-        Images: new() { "/images/menu/forretter1.jpg", "/images/menu/forretter2.jpg", "/images/menu/forretter3.jpg" },
+        Images: new() { "images/menu/forretter1.jpg", "images/menu/forretter2.jpg", "images/menu/forretter3.jpg" },
         Items: new()
         {
             new("Crispy Ebi", "45 kr.", "3 stk. Crispy ebi med chilimayonaise", "skaldyr, gluten", 1),
@@ -65,7 +65,7 @@ public class MenuDataService
     private MenuSection Sashimi() => new(
         Id: "sashimi",
         Title: "Sashimi",
-        Images: new() { "/images/menu/sashimi1.jpg" },
+        Images: new() { "images/menu/sashimi1.jpg" },
         Subtitle: "Serveres med salatmix, tangsalat, avokado, ørredrogn, wasabi og ingefær",
         Items: new()
         {
@@ -79,7 +79,7 @@ public class MenuDataService
     private MenuSection NigiriClassics() => new(
         Id: "nigiri-classics",
         Title: "Nigiri Classics",
-        Images: new() { "/images/menu/nigiriclassic1.jpg" },
+        Images: new() { "images/menu/nigiriclassic1.jpg" },
         Subtitle: "2 stk. – vælg valgfrit 2 nigiri til samme pris",
         Items: new()
         {
@@ -96,7 +96,7 @@ public class MenuDataService
     private MenuSection NigiriDeluxe() => new(
         Id: "nigiri-deluxe",
         Title: "Nigiri Deluxe",
-        Images: new() { "/images/menu/nigirideluxe1.jpg" },
+        Images: new() { "images/menu/nigirideluxe1.jpg" },
         Subtitle: "Pr. stk.",
         Items: new()
         {
@@ -111,7 +111,7 @@ public class MenuDataService
     private MenuSection Gunkan() => new(
         Id: "gunkan",
         Title: "Gunkan",
-        Images: new() { "/images/menu/gunkan1.jpg" },
+        Images: new() { "images/menu/gunkan1.jpg" },
         Subtitle: "Pr. stk.",
         Items: new()
         {
@@ -126,7 +126,7 @@ public class MenuDataService
     private MenuSection UraMaki() => new(
         Id: "ura-maki",
         Title: "Ura Maki",
-        Images: new() { "/images/menu/uramaki1.jpg" },
+        Images: new() { "images/menu/uramaki1.jpg" },
         Subtitle: "Alle Ura Maki fås i 8 skiver – 1 sushirulle skåret i 8 skiver",
         Items: new()
         {
@@ -147,7 +147,7 @@ public class MenuDataService
     private MenuSection KaburiMaki() => new(
         Id: "kaburi-maki",
         Title: "Kaburi Maki",
-        Images: new() { "/images/menu/kaburimaki1.jpg" },
+        Images: new() { "images/menu/kaburimaki1.jpg" },
         Subtitle: "Alle Kaburi Maki fås i 8 skiver – 1 sushirulle skåret i 8 skiver",
         Items: new()
         {
@@ -170,7 +170,7 @@ public class MenuDataService
     private MenuSection HusomaikiClassic() => new(
         Id: "husomaki-classic",
         Title: "Husomaki Classic",
-        Images: new() { "/images/menu/husomakiclassic1.jpg" },
+        Images: new() { "images/menu/husomakiclassic1.jpg" },
         Subtitle: "8 skiver – kan fås med chilimayo eller hvidløg",
         Items: new()
         {
@@ -228,7 +228,7 @@ public class MenuDataService
     private MenuSection Rispapir() => new(
         Id: "rispapir",
         Title: "Rispapir",
-        Images: new() { "/images/menu/rispapir1.jpg" },
+        Images: new() { "images/menu/rispapir1.jpg" },
         Subtitle: "Rulle af rispapir med salatmix, avokado og agurk",
         Items: new()
         {
@@ -312,7 +312,7 @@ public class MenuDataService
     private MenuSection Drikkekort() => new(
         Id: "drikkekort",
         Title: "Drikkekort",
-        Images: new() { "/images/menu/drinks1.jpg" },
+        Images: new() { "images/menu/drinks1.jpg" },
         Subtitle: "",
         Items: new()
         {

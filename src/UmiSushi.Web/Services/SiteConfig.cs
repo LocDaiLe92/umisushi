@@ -22,5 +22,5 @@ public static class SiteConfig
     // SEO
     public const string SiteUrl = "https://www.umisushi.dk";
     public const string SiteName = "UmiSushi Ry";
-    public const string DefaultOgImage = "/images/og-image.jpg";
+    public const string DefaultOgImage = "images/og-image.jpg";
 }

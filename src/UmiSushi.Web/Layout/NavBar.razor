@@ -4,17 +4,17 @@
 
 <nav class="navbar">
     <div class="umi-container navbar-inner">
-        <a href="/" class="nav-logo" aria-label="UmiSushi">
-            <img src="/images/umisushilogo.png" alt="UmiSushi" style="height:2.4rem;width:auto;object-fit:contain;" />
+        <a href="" class="nav-logo" aria-label="UmiSushi">
+            <img src="images/umisushilogo.png" alt="UmiSushi" style="height:2.4rem;width:auto;object-fit:contain;" />
         </a>
 
         <!-- Desktop nav links -->
         <ul class="nav-links">
-            <li><a href="/" class="@ActiveClass("/")">Hjem</a></li>
-            <li><a href="/menu" class="@ActiveClass("/menu")">Menu</a></li>
-            <li><a href="/bestil-take-away" class="@ActiveClass("/bestil-take-away")">Take-Away</a></li>
-            <li><a href="/kontakt" class="@ActiveClass("/kontakt")">Kontakt</a></li>
-            <li><a href="/reservation" class="btn-primary nav-book-btn">Book et bord</a></li>
+            <li><a href="" class="@ActiveClass("/")">Hjem</a></li>
+            <li><a href="menu" class="@ActiveClass("/menu")">Menu</a></li>
+            <li><a href="bestil-take-away" class="@ActiveClass("/bestil-take-away")">Take-Away</a></li>
+            <li><a href="kontakt" class="@ActiveClass("/kontakt")">Kontakt</a></li>
+            <li><a href="reservation" class="btn-primary nav-book-btn">Book et bord</a></li>
         </ul>
 
         <!-- Hamburger -->
@@ -29,11 +29,11 @@
 <!-- Mobile menu -->
 <div class="mobile-menu @(_menuOpen ? "open" : "")">
     <ul>
-        <li><a href="/" class="@ActiveClass("/")" @onclick="CloseMenu">Hjem</a></li>
-        <li><a href="/menu" class="@ActiveClass("/menu")" @onclick="CloseMenu">Menu</a></li>
-        <li><a href="/bestil-take-away" class="@ActiveClass("/bestil-take-away")" @onclick="CloseMenu">Take-Away</a></li>
-        <li><a href="/kontakt" class="@ActiveClass("/kontakt")" @onclick="CloseMenu">Kontakt</a></li>
-        <li><a href="/reservation" class="mobile-book-btn" @onclick="CloseMenu">Book et bord</a></li>
+        <li><a href="" class="@ActiveClass("/")" @onclick="CloseMenu">Hjem</a></li>
+        <li><a href="menu" class="@ActiveClass("/menu")" @onclick="CloseMenu">Menu</a></li>
+        <li><a href="bestil-take-away" class="@ActiveClass("/bestil-take-away")" @onclick="CloseMenu">Take-Away</a></li>
+        <li><a href="kontakt" class="@ActiveClass("/kontakt")" @onclick="CloseMenu">Kontakt</a></li>
+        <li><a href="reservation" class="mobile-book-btn" @onclick="CloseMenu">Book et bord</a></li>
     </ul>
 </div>
 
