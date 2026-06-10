@@ -734,6 +734,25 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.footer-smiley {
+    display: inline-block;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.footer-smiley:hover {
+    opacity: 1;
+}
+
+.footer-smiley img {
+    display: block;
+    height: 42px;
+    width: auto;
+}
+
 .footer-heading {
     font-size: 0.7rem;
     letter-spacing: 0.18em;

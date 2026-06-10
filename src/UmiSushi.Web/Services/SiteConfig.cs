@@ -14,7 +14,7 @@ public static class SiteConfig
     // Eksterne URLs
     public const string TakeawayUrl = "http://weorder.xyz/umisushi";
     public const string FacebookUrl = "https://www.facebook.com/umisushidk";
-    public const string InstagramUrl = "https://www.instagram.com/umisushidk/";
+    public const string InstagramUrl = "https://www.instagram.com/umisushiry/";
     public const string TripAdvisorUrl = "https://www.tripadvisor.dk/Restaurant_Review-g227596-d10406654-Reviews-Umi_Sushi-Ry_Skanderborg_East_Jutland_Jutland.html";
     public const string FindSmileyUrl = "https://www.findsmiley.dk/635610";
     public const string GoogleMapsEmbedUrl = "https://maps.google.com/maps?q=Skanderborgvej+11,+8680+Ry,+Danmark&output=embed&hl=da";
