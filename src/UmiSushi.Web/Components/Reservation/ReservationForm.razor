@@ -4,7 +4,7 @@
 <EditForm Model="@_model" OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator />
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+    <div class="form-row">
         <div class="form-group">
             <label class="form-label" for="navn">Navn *</label>
             <InputText id="navn" class="form-control" @bind-Value="_model.Navn" placeholder="Dit fulde navn" />
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+    <div class="form-row">
         <div class="form-group">
             <label class="form-label" for="dato">Dato *</label>
             <InputDate id="dato" class="form-control" @bind-Value="_model.Dato" />

@@ -50,6 +50,12 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color-scheme: light;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+img {
+    max-width: 100%;
 }
 
 h1, h2, h3 {
@@ -85,6 +91,61 @@ a:hover {
 
 .umi-section {
     padding: var(--section-py) 0;
+}
+
+/* Responsive grid utilities — column counts live here (not inline)
+   so media queries can collapse them on small screens. */
+.some-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+}
+
+/* Two columns with a wider main/content column (sidebar + body). */
+.two-col-aside {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+}
+
+/* Three equal columns used for step/feature rows. */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Paired form fields side by side. */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .two-col,
+    .two-col-aside {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .some-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =============================================
@@ -1285,9 +1346,6 @@ textarea.form-control {
     }
     .split-row-text {
         max-width: 100%;
-    }
-    .some-card {
-        grid-column: span 1;
     }
 }
 
